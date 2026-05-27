@@ -15,14 +15,11 @@
 - [`data_model_and_api_contracts.md`](data_model_and_api_contracts.md): entities, API conventions, and event contract guidance.
 - [`ui_ux_design_system.md`](ui_ux_design_system.md): design system, accessibility, theming, and UX patterns.
 - [`decision_log.md`](decision_log.md): architecture decision records (ADRs).
+- [`pull_request_guidelines.md`](pull_request_guidelines.md): pull request quality, validation, and review standards.
 
 ## Security And Operations
 - [`security_compliance_governance.md`](security_compliance_governance.md): security model, governance, compliance controls.
 - [`observability_and_sre.md`](observability_and_sre.md): SLOs, monitoring, incident response, and disaster recovery.
 
-## Legacy/Continuity Docs
-- [`plan.md`](plan.md)
-- [`milestone_1.md`](milestone_1.md)
-- [`milestone_2.md`](milestone_2.md)
-- [`milestone_3.md`](milestone_3.md)
-- [`user_service.md`](user_service.md)
+## Contribution Workflow
+- Follow [`pull_request_guidelines.md`](pull_request_guidelines.md) before opening or reviewing pull requests.
