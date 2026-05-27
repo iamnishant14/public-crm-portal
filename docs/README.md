@@ -1,26 +1,26 @@
-# Government CRM Documentation Index
+# Government CRM Documentation
 
-## Start Here
-- [`vision_and_principles.md`](vision_and_principles.md): product vision, objectives, personas, and guiding principles.
-- [`architecture_overview.md`](architecture_overview.md): end-to-end architecture and service boundaries.
-- [`delivery_roadmap.md`](delivery_roadmap.md): phased execution plan and exit criteria.
-- [`deliverables_tracker.md`](deliverables_tracker.md): centralized tracker for deliverable ownership, status, and targets.
+Welcome to the Government CRM Platform documentation. Documentation is organized by feature area for faster discovery.
 
-## Core Platform Design
-- [`tenant_and_provisioning_design.md`](tenant_and_provisioning_design.md): dedicated instance model and provisioning lifecycle.
-- [`configuration_system_design.md`](configuration_system_design.md): configuration schema strategy, validation, publish, rollback.
-- [`admin_console_design.md`](admin_console_design.md): admin UX, permissions, and safe-change workflows.
-- [`domain_templates.md`](domain_templates.md): hospital/school/electricity templates and extension points.
+## Quick Start
+👉 **See [`INDEX.md`](INDEX.md) for the full documentation index organized by frontend, middleware, and backend.**
 
-## Engineering Standards
-- [`data_model_and_api_contracts.md`](data_model_and_api_contracts.md): entities, API conventions, and event contract guidance.
-- [`ui_ux_design_system.md`](ui_ux_design_system.md): design system, accessibility, theming, and UX patterns.
-- [`decision_log.md`](decision_log.md): architecture decision records (ADRs).
-- [`pull_request_guidelines.md`](pull_request_guidelines.md): pull request quality, validation, and review standards.
+## Documentation Structure
+- **[frontend/](frontend/)** — Admin console design, UI/UX design system, component guidance
+- **[middleware/](middleware/)** — API contracts, BFF specifications, developer workflows
+- **[backend/](backend/)** — Architecture, provisioning, config, SRE, security, templates, execution plans
 
-## Security And Operations
-- [`security_compliance_governance.md`](security_compliance_governance.md): security model, governance, compliance controls.
-- [`observability_and_sre.md`](observability_and_sre.md): SLOs, monitoring, incident response, and disaster recovery.
+## Key Documents
+- Vision & Principles: [backend/vision_and_principles.md](backend/vision_and_principles.md)
+- Architecture: [backend/architecture_overview.md](backend/architecture_overview.md)
+- Delivery Roadmap: [backend/delivery_roadmap.md](backend/delivery_roadmap.md)
+- Deliverables Tracker: [backend/deliverables_tracker.md](backend/deliverables_tracker.md)
+
+## Contributing
+- Start with [Contribution Workflow](#contribution-workflow) below.
+- Refer to [middleware/pull_request_guidelines.md](middleware/pull_request_guidelines.md) for PR quality standards.
 
 ## Contribution Workflow
-- Follow [`pull_request_guidelines.md`](pull_request_guidelines.md) before opening or reviewing pull requests.
+- Before opening a PR, sync with latest `main` and ensure changes are focused.
+- Follow PR guidelines (link above) for title, description, and commit quality.
+- Update relevant docs when architecture, behavior, or workflows change.
