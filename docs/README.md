@@ -4,6 +4,7 @@
 - [`vision_and_principles.md`](vision_and_principles.md): product vision, objectives, personas, and guiding principles.
 - [`architecture_overview.md`](architecture_overview.md): end-to-end architecture and service boundaries.
 - [`delivery_roadmap.md`](delivery_roadmap.md): phased execution plan and exit criteria.
+- [`deliverables_tracker.md`](deliverables_tracker.md): centralized tracker for deliverable ownership, status, and targets.
 
 ## Core Platform Design
 - [`tenant_and_provisioning_design.md`](tenant_and_provisioning_design.md): dedicated instance model and provisioning lifecycle.
