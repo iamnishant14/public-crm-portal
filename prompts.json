@@ -1,0 +1,10 @@
+{
+    "prompt": "Create a plan for CRM app for different government organizations like hospital,school,electricity dept , etc which has all the modern functionality and also modern look and feel .
+App should have an option to spin up new instances based on orgs based on orgs requirements like for example based on configs.
+
+and also should be configurable by admins.
+
+The plan should include all trhe design,architecture and decisions mentionned as extensively as it can get.
+
+Document the whole process inside the docs folder for easy reference."   
+}
