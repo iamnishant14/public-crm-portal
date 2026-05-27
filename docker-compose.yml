@@ -1,0 +1,22 @@
+version: '3'
+services:
+  user-service:
+    build: ./user-service
+    ports:
+      - "3001:3000"
+  contact-service:
+    build: ./contact-service
+    ports:
+      - "3002:3000"
+  case-management-service:
+    build: ./case-management-service
+    ports:
+      - "3003:3000"
+  reporting-analytics-service:
+    build: ./reporting-analytics-service
+    ports:
+      - "3004:3000"
+  dashboard-service:
+    build: ./dashboard-service
+    ports:
+      - "3005:3000"
