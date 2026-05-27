@@ -23,6 +23,7 @@
 vscode/*
 
 .continue/
+.cursor/
 
 # debug
 npm-debug.log*
