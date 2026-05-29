@@ -25,18 +25,20 @@ export function AuthProvider({ children }) {
     setLoading(true)
     setError(null)
     try {
-      // TODO: Replace with actual API call to /api/auth/login
-      const mockUser = {
-        id: '1',
-        email,
-        name: email.split('@')[0],
-        role: 'OrgAdmin',
-        permissions: ['read', 'write', 'approve']
+      const resp = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      })
+      if (!resp.ok) {
+        const err = await resp.json()
+        throw new Error(err.message || 'Login failed')
       }
-      localStorage.setItem('auth_token', 'mock_token_' + Date.now())
-      localStorage.setItem('user_data', JSON.stringify(mockUser))
-      setUser(mockUser)
-      return mockUser
+      const { token, user: respUser } = await resp.json()
+      localStorage.setItem('auth_token', token)
+      localStorage.setItem('user_data', JSON.stringify(respUser))
+      setUser(respUser)
+      return respUser
     } catch (e) {
       setError(e.message)
       throw e
