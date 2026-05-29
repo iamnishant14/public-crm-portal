@@ -72,6 +72,48 @@ export default function WorkflowBuilder() {
     alert('Workflow exported to clipboard!')
   }
 
+  const saveWorkflow = async (name) => {
+    const payload = { name: name || `Workflow ${Date.now()}`, data: { steps, connections }, createdBy: 'admin@org.gov' }
+    try {
+      const resp = await fetch('/api/workflows', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      const data = await resp.json()
+      alert('Saved workflow: ' + data.id)
+      return data
+    } catch (e) {
+      console.error(e)
+      alert('Failed to save workflow')
+    }
+  }
+
+  const loadWorkflows = async () => {
+    try {
+      const resp = await fetch('/api/workflows')
+      const data = await resp.json()
+      return data.workflows
+    } catch (e) {
+      console.error(e)
+      return []
+    }
+  }
+
+  const loadWorkflowById = async (id) => {
+    try {
+      const resp = await fetch(`/api/workflows/${id}`)
+      if (!resp.ok) throw new Error('not found')
+      const data = await resp.json()
+      setSteps(data.data.steps || [])
+      setConnections(data.data.connections || [])
+      setSelectedStep(null)
+    } catch (e) {
+      console.error(e)
+      alert('Failed to load workflow')
+    }
+  }
+
   return (
     <div className={styles.workflowBuilder}>
       <div className={styles.canvas}>

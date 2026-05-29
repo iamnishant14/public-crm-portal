@@ -132,6 +132,19 @@
   background: #1d4ed8;
 }
 
+.saveControls {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.saveInput {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  width: 100%;
+}
+
 @media (max-width: 1024px) {
   .workflowBuilder {
     grid-template-columns: 1fr;
