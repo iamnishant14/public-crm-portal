@@ -17,8 +17,14 @@ export default function WorkflowBuilder() {
   const [selectedStep, setSelectedStep] = useState(null)
   const [nextId, setNextId] = useState(2)
   const [connecting, setConnecting] = useState(null)
+  const [savedWorkflows, setSavedWorkflows] = useState([])
+  const [selectedWorkflowId, setSelectedWorkflowId] = useState(null)
 
   const canvasRef = React.useRef(null)
+
+  React.useEffect(() => {
+    loadWorkflows()
+  }, [])
 
   const addStep = (stepType) => {
     const newStep = {
@@ -81,6 +87,8 @@ export default function WorkflowBuilder() {
         body: JSON.stringify(payload)
       })
       const data = await resp.json()
+      // optimistic update: add to savedWorkflows
+      setSavedWorkflows(prev => [data, ...prev])
       alert('Saved workflow: ' + data.id)
       return data
     } catch (e) {
@@ -93,6 +101,7 @@ export default function WorkflowBuilder() {
     try {
       const resp = await fetch('/api/workflows')
       const data = await resp.json()
+      setSavedWorkflows(data.workflows || [])
       return data.workflows
     } catch (e) {
       console.error(e)
@@ -271,7 +280,48 @@ export default function WorkflowBuilder() {
           </div>
         )}
 
-        <button className={styles.exportBtn} onClick={exportWorkflow}>
+        <div className={styles.saveControls}>
+          <input className={styles.saveInput} placeholder="Workflow name" id="workflowName" />
+          <button className={styles.exportBtn} onClick={() => saveWorkflow(document.getElementById('workflowName').value)}>
+            💾 Save
+          </button>
+        </div>
+
+        <div style={{ marginTop: 12 }}>
+          <label htmlFor="loadWorkflow">Load saved workflow</label>
+          <div style={{ display: 'flex', gap: 8, marginTop: 6 }}>
+            <select id="loadWorkflow" style={{ flex: 1, padding: 8 }} value={selectedWorkflowId || ''} onChange={(e) => setSelectedWorkflowId(e.target.value)}>
+              <option value="">-- Select --</option>
+              {savedWorkflows.map(w => (
+                <option key={w.id} value={w.id}>{w.name} ({w.id})</option>
+              ))}
+            </select>
+            <button className={styles.exportBtn} onClick={() => { if (selectedWorkflowId) loadWorkflowById(selectedWorkflowId) }}>
+              ⤵ Load
+            </button>
+            <button className={styles.exportBtn} onClick={async () => {
+              if (!selectedWorkflowId) return alert('Select a workflow to delete')
+              const keep = confirm('Delete workflow ' + selectedWorkflowId + '?')
+              if (!keep) return
+              const prev = savedWorkflows
+              setSavedWorkflows(prev.filter(w => w.id !== selectedWorkflowId))
+              try {
+                const resp = await fetch(`/api/workflows/${selectedWorkflowId}`, { method: 'DELETE' })
+                if (!resp.ok) throw new Error('delete failed')
+                alert('Deleted')
+                setSelectedWorkflowId(null)
+              } catch (e) {
+                console.error(e)
+                alert('Delete failed')
+                setSavedWorkflows(prev)
+              }
+            }}>
+              🗑 Delete
+            </button>
+          </div>
+        </div>
+
+        <button className={styles.exportBtn} onClick={exportWorkflow} style={{ marginTop: 8 }}>
           📥 Export Workflow
         </button>
       </div>
