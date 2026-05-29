@@ -1,22 +1,17 @@
 import AdminShell from '../../components/shell/AdminShell'
+import { ProtectedRoute } from '../../components/ProtectedRoute'
+import FormBuilder from '../../components/pages/FormBuilder'
 
 export default function FormStudioPage() {
   return (
-    <AdminShell title="Form Studio">
-      <div className="card">
-        <h3>Form Designer</h3>
-        <p>Placeholder for form designer UI. Plans to include:</p>
-        <ul>
-          <li>Field catalog and schema-based form builder</li>
-          <li>Form validation rules</li>
-          <li>Conditional logic</li>
-          <li>Field dependencies</li>
-        </ul>
-      </div>
-      <div className="card">
-        <h3>Form Templates</h3>
-        <p>No form templates created yet.</p>
-      </div>
-    </AdminShell>
+    <ProtectedRoute>
+      <AdminShell title="Form Studio">
+        <div className="card">
+          <h3>Schema-Based Form Designer</h3>
+          <p>Drag fields from the palette, configure properties, and export as JSON schema</p>
+          <FormBuilder />
+        </div>
+      </AdminShell>
+    </ProtectedRoute>
   )
 }
