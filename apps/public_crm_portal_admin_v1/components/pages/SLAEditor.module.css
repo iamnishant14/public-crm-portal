@@ -1,0 +1,178 @@
+.slaEditor {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+}
+
+.policies {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  height: fit-content;
+}
+
+.policies h3 {
+  margin-top: 0;
+  font-size: 16px;
+  color: #111827;
+}
+
+.policyList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.policyItem {
+  padding: 10px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.2s;
+}
+
+.policyItem:hover {
+  background: #e5e7eb;
+}
+
+.policyItem.active {
+  background: #2563eb;
+  color: white;
+  border-color: #1d4ed8;
+}
+
+.addBtn {
+  width: 100%;
+  padding: 10px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.addBtn:hover {
+  background: #059669;
+}
+
+.policyEditor {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.policyEditor h3 {
+  margin-top: 0;
+  font-size: 16px;
+  color: #111827;
+}
+
+.policyEditor h4 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #111827;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111827;
+  font-size: 14px;
+}
+
+.formGroup input,
+.formGroup select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.timeInput {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: 8px;
+}
+
+.escalationSection {
+  margin-top: 24px;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 6px;
+}
+
+.emptyState {
+  color: #9ca3af;
+  font-size: 14px;
+  margin: 0;
+}
+
+.escalationTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.escalationTable th {
+  text-align: left;
+  padding: 8px;
+  background: #e5e7eb;
+  border-bottom: 1px solid #d1d5db;
+  font-weight: 600;
+}
+
+.escalationTable td {
+  padding: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.addEscBtn {
+  padding: 8px 12px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.addEscBtn:hover {
+  background: #2563eb;
+}
+
+@media (max-width: 768px) {
+  .slaEditor {
+    grid-template-columns: 1fr;
+  }
+  
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
