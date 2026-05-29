@@ -1,0 +1,45 @@
+name: Admin App CI
+
+on:
+  push:
+    branches: [main, feature/setup]
+    paths:
+      - 'apps/public_crm_portal_admin_v1/**'
+      - '.github/workflows/admin-app.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'apps/public_crm_portal_admin_v1/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/public_crm_portal_admin_v1
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: apps/public_crm_portal_admin_v1/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Build
+        run: npm run build
+
+      - name: Run tests
+        run: npm test --if-present

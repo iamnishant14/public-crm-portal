@@ -1,0 +1,16 @@
+{
+  "name": "public_crm_portal_designsystem_v1",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o storybook-static",
+    "build": "npm run build-storybook",
+    "test": "echo \"tests not configured yet\""
+  },
+  "devDependencies": {
+    "@storybook/react": "^7.0.0",
+    "@storybook/addon-essentials": "^7.0.0"
+  }
+}
