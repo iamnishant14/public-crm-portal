@@ -17,10 +17,21 @@ export default function SafeChangeWorkflow() {
     setStep('preview')
   }
 
-  const handleSimulate = () => {
-    // Simulate and calculate risk score
-    setRiskScore(35) // Example: 35/100 risk
-    setStep('risk')
+  const handleSimulate = async () => {
+    try {
+      const resp = await fetch('/api/config/preview', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ changes: draftData.changes })
+      })
+      const data = await resp.json()
+      setRiskScore(data.riskScore)
+      setStep('risk')
+    } catch (e) {
+      console.error(e)
+      setRiskScore(0)
+      setStep('risk')
+    }
   }
 
   const handleRequestApproval = () => {
@@ -42,8 +53,19 @@ export default function SafeChangeWorkflow() {
     }
   }
 
-  const handlePublish = () => {
-    setStep('published')
+  const handlePublish = async () => {
+    try {
+      const resp = await fetch('/api/config/publish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ draft: draftData })
+      })
+      const data = await resp.json()
+      setStep('published')
+    } catch (e) {
+      console.error(e)
+      alert('Publish failed: ' + e.message)
+    }
   }
 
   const renderStepContent = () => {
