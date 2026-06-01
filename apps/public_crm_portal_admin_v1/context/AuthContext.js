@@ -4,15 +4,17 @@ const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
+  const [token, setToken] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const token = localStorage.getItem('auth_token')
+    const storedToken = localStorage.getItem('auth_token')
     const userData = localStorage.getItem('user_data')
     
-    if (token && userData) {
+    if (storedToken && userData) {
       try {
+        setToken(storedToken)
         setUser(JSON.parse(userData))
       } catch (e) {
         setError('Failed to parse user data')
@@ -37,6 +39,7 @@ export function AuthProvider({ children }) {
       const { token, user: respUser } = await resp.json()
       localStorage.setItem('auth_token', token)
       localStorage.setItem('user_data', JSON.stringify(respUser))
+      setToken(token)
       setUser(respUser)
       return respUser
     } catch (e) {
@@ -50,6 +53,7 @@ export function AuthProvider({ children }) {
   const logout = () => {
     localStorage.removeItem('auth_token')
     localStorage.removeItem('user_data')
+    setToken(null)
     setUser(null)
   }
 
@@ -57,7 +61,7 @@ export function AuthProvider({ children }) {
   const hasPermission = (permission) => user?.permissions?.includes(permission)
 
   return (
-    <AuthContext.Provider value={{ user, loading, error, login, logout, isAuthenticated, hasPermission }}>
+    <AuthContext.Provider value={{ user, token, loading, error, login, logout, isAuthenticated, hasPermission }}>
       {children}
     </AuthContext.Provider>
   )

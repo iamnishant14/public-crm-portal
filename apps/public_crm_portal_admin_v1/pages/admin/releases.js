@@ -1,5 +1,6 @@
 import AdminShell from '../../components/shell/AdminShell'
 import { ProtectedRoute } from '../../components/ProtectedRoute'
+import ConfigPublish from '../../components/pages/ConfigPublish'
 import SafeChangeWorkflow from '../../components/pages/SafeChangeWorkflow'
 
 export default function ReleasesPage() {
@@ -11,6 +12,8 @@ export default function ReleasesPage() {
           <p>Draft → Preview → Risk Assessment → Approvals → Publish</p>
           <SafeChangeWorkflow />
         </div>
+
+        <ConfigPublish />
 
         <div className="card" style={{ marginTop: '30px' }}>
           <h3>Config Versions History</h3>

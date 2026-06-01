@@ -1,5 +1,5 @@
-import { PERMISSIONS, hasPermission } from '../../../../lib/rbac'
-import { getUserFromRequest } from '../../../../lib/serverAuth'
+import { PERMISSIONS, hasPermission } from '../../../lib/rbac'
+import { getUserFromRequest } from '../../../lib/serverAuth'
 
 let publishedConfigs = [
   { id: 'cfg_1', name: 'Default Config', version: 1, publishedAt: new Date().toISOString(), publishedBy: 'admin@sys' }

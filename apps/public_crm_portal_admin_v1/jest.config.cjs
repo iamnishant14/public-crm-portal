@@ -6,6 +6,10 @@ module.exports = {
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
   transform: {
-    '^.+\\.jsx?$': 'babel-jest'
+    '^.+\\.jsx?$': ['babel-jest', {
+      babelrc: false,
+      configFile: false,
+      presets: [['@babel/preset-env', { targets: { node: '18' } }]]
+    }]
   }
 };
