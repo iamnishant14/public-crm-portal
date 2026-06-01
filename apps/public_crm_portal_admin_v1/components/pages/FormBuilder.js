@@ -47,7 +47,7 @@ export default function FormBuilder() {
     if ((direction === 'up' && idx === 0) || (direction === 'down' && idx === formFields.length - 1)) return
     
     const newFields = [...formFields]
-    const swapIdx = direction === 'up' ? idx - 1 : idx + 1
+    const swapIdx = direction === 'up' ? idx - 1 : idx + 1;
     [newFields[idx], newFields[swapIdx]] = [newFields[swapIdx], newFields[idx]]
     setFormFields(newFields)
   }

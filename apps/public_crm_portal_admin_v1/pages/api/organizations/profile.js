@@ -1,5 +1,5 @@
-import { PERMISSIONS, hasPermission } from '../../../../lib/rbac'
-import { getUserFromRequest } from '../../../../lib/serverAuth'
+import { PERMISSIONS, hasPermission } from '../../../lib/rbac'
+import { getUserFromRequest } from '../../../lib/serverAuth'
 
 let organizations = [
   { id: 'org_1', name: 'Primary Org', status: 'active', createdAt: new Date().toISOString() }
