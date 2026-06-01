@@ -5,6 +5,8 @@ This folder contains frontend-focused documentation: admin console design, UI/UX
 Files:
 - admin_console_design.md — Admin console UX and safe-change workflows
 - ui_ux_design_system.md — Design tokens, components, accessibility rules, theming
+- UI_DEVELOPMENT_PLAN.md — Frontend roadmap, implementation backlog, acceptance criteria
+- admin_console_component_inventory.md — Admin console route/component inventory and implementation status
 
 Folder & naming convention
 

@@ -13,6 +13,7 @@ Design systems, UX patterns, and admin console guidance.
 API standards, data contracts, and BFF guidance.
 
 - **[data_model_and_api_contracts.md](middleware/data_model_and_api_contracts.md)** — Entity definitions, API standards, error contracts, event naming, governance.
+- **[admin_bff_api_contracts.md](middleware/admin_bff_api_contracts.md)** — Frontend-facing Admin Console BFF contracts for auth, audit, and config lifecycle.
 - **[pull_request_guidelines.md](middleware/pull_request_guidelines.md)** — PR quality standards, commit rules, review practices, merge readiness.
 
 ## Backend Documentation

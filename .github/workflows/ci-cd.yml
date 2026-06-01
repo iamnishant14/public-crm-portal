@@ -1,18 +1,13 @@
-name: Admin App CI
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main, feature/setup]
-    paths:
-      - 'apps/public_crm_portal_admin_v1/**'
-      - '.github/workflows/admin-app.yml'
+    branches: [ main, feature/* ]
   pull_request:
-    branches: [main]
-    paths:
-      - 'apps/public_crm_portal_admin_v1/**'
+    branches: [ main ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -23,10 +18,11 @@ jobs:
         node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v3
-      
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
@@ -38,8 +34,8 @@ jobs:
       - name: Lint
         run: npm run lint --if-present
 
+      - name: Run Tests
+        run: npm test
+
       - name: Build
         run: npm run build
-
-      - name: Run tests
-        run: npm test --if-present
